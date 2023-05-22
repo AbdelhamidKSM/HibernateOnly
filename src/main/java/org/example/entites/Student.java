@@ -12,20 +12,17 @@ import lombok.ToString;
 @Getter
 @NoArgsConstructor
 @ToString
-public class User {
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name_user")
     private String name;
-
-    @Column(name = "email_user")
     private String email;
 
 
 
-    public User(String name, String email) {
+    public Student(String name, String email) {
         this.name = name;
         this.email = email;
     }
