@@ -1,97 +1,98 @@
 import org.example.entites.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-import java.util.List;
+import static org.junit.Assert.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
 
-class HibernateFullTest {
+public class HibernateFullTest {
 
-    //the session factory is hibernate
     private SessionFactory sessionFactory;
+    private Session session ;
+    private Transaction transaction ;
 
-    @BeforeEach
-    protected void setUp() throws Exception {
-        // A SessionFactory is set up once for an application!
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure("hibernate.cfg.xml") // configures settings from hibernate.cfg.xml
-                .build();
-        try {
-            sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
-        }
-        catch (Exception e) {
-            // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
-            // so destroy it manually.
-            StandardServiceRegistryBuilder.destroy( registry );
-        }
+
+
+    @Before
+    public void setUp(){
+        Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+         sessionFactory  = configuration.buildSessionFactory();
+         session = sessionFactory.openSession();
+         transaction = session.beginTransaction();
     }
+
+    @After
+    public void  cleanUp(){
+        transaction.rollback();
+        session.close();
+        sessionFactory.close();
+    }
+
+
     @Test
-    void save_myFirstObject_to_DB (){
-        //Given
+  public   void student_persistence(){
+        // Create a Student entity
         Student student = new Student("Ahmed" , "Ahmed@mail.com");
 
-        try(Session session = sessionFactory.openSession();){
-            session.beginTransaction();
+        // Persist the student entity to the Db (ORM)
+        session.persist(student);
+        session.flush();
 
-            //
-            session.persist(student);
-            session.getTransaction().commit();
-        }}
+        // retrieve the student from db
+        Student retriveStudent = session.get(Student.class , student.getId());
+
+        assertNotNull(retriveStudent);
+        assertEquals("Ahmed" ,retriveStudent.getName());
+        assertEquals("Ahmed@mail.com" ,retriveStudent.getEmail());
+    }
 
 
     @Test
-    void change_name_Of_student (){
+    public void student_Update (){
+        // Create a Student Entity
+        Student student = new Student("Ali", "ALi@outlook.com");
 
-        Session session = sessionFactory.openSession();
-//        HibernateLifecycleUtil.getManagedEntities(session);
-        List<Student> student = session.createQuery("from Student ").getResultList();
-        System.out.println(student.get(0));
+        // Persist to BD
+        session.persist(student);
+        session.flush();
+
+        // update the entity in Db
+        student.setName("Mohammed");
+        student.setEmail("Mohammedh@mail.com");
+        session.merge(student);
+        session.flush();
+
+
+        //testing the update result
+        Student retriveStudent = session.get(Student.class , student.getId());
+        assertNotNull(retriveStudent);
+        assertEquals("Mohammed" ,retriveStudent.getName());
+        assertEquals("Mohammedh@mail.com" ,retriveStudent.getEmail());
+
     }
-
-    @AfterEach
-    protected void tearDown() throws Exception {
-        if ( sessionFactory != null ) {
-            sessionFactory.close();
-        }
-    }
-
-//    @SuppressWarnings("unchecked")
-//    @Test
-//     void testBasicUsage() {
-//        // create a couple of events...
-//        Session session = sessionFactory.openSession();
-//        session.beginTransaction();
-//
-//        session.remove(new Student("Marco's Friend", LocalDate.now()));
-//
-//        session.getTransaction().commit();
-//        session.close();
-//
-//        session = sessionFactory.openSession();
-//        session.beginTransaction();
-//
-//        List<Student> result = session.createQuery( "select u from Student u" , Student.class).list();
-//        for ( Student user : result) {
-//            System.out.println( "Student (" + user.getName() + ") : " + user.getBirthDate() );
-//        }
-//
-//
-//        session.getTransaction().commit();
-//        session.close();
-//    }
 
     @Test
-     void marco_is_in_the_house() {
-        assertThat( 1).isGreaterThanOrEqualTo(0);
+    public void student_Delete(){
+        // Create a Student Entity
+        Student student = new Student("Ali", "ALi@outlook.com");
+
+        // Persist to BD
+        session.persist(student);
+        session.flush();
+
+        // remove the entity in Db
+        session.remove(student);
+        session.flush();
+
+
+        //testing the update result
+        Student retriveStudent = session.get(Student.class, student.getId());
+        assertNull(retriveStudent);
     }
-
-
 
 }

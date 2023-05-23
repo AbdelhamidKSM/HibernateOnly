@@ -1,8 +1,8 @@
-# HibernateOnly
+# Hibernate_JPA_Only
 About all JPA &amp; Hibernate 
 In this example, we used :`EntityManager` for JPA annotations   and `Session` and `SessionFactory` for hibernate.
 
-Changes made between Jpa and Hibernate:
+### Changes made between Jpa and Hibernate:
 
 1. Replaced `EntityManagerFactory` with `SessionFactory`. We now configure Hibernate using `Configuration` and `configure("hibernate.cfg.xml")` method.
 2. Replaced `EntityManager` with `Session`. We open a new session using `sessionFactory.openSession()`.
