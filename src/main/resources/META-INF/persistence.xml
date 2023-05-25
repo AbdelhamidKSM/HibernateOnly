@@ -5,7 +5,6 @@
              version="2.2">
 
     <persistence-unit name="jpa-only" transaction-type="RESOURCE_LOCAL">
-        <class>org.example.entites.Student</class>
         <!-- Add database connection properties -->
         <properties>
             <!-- Database connection settings -->
