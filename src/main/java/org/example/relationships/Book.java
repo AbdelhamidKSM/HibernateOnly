@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,12 @@ public class Book {
     @Column(name = "isbn")
     private String isbn;
 
+    @Column(name = "price")
+    private Double price;
+
+    @Column(name = "publish_date")
+    private LocalDateTime publishDate;
+
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
@@ -42,5 +49,6 @@ public class Book {
 
     @OneToOne(mappedBy = "favoritebook", orphanRemoval = true)
     private Author authorFavoriteBook;
+
 
 }

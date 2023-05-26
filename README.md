@@ -1,4 +1,8 @@
 # Hibernate_JPA_Only
+
+### Quick Defintions :
+#### Persistence Context :  persistence context is the working environment where entities are managed during their lifecycle in ORM frameworks
+#### cascading : is a feature that automatically applies certain operations from parent entities to associated child entities.such as persist (insert), merge (update), remove (delete), and refresh.
 About all JPA &amp; Hibernate 
 In this example, we used :`EntityManager` for JPA annotations   and `Session` and `SessionFactory` for hibernate.
 

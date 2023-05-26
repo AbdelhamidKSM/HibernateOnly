@@ -20,10 +20,15 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
         <!-- Enable Hibernate's automatic table creation/update -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Names the annotated entity class -->
         <mapping class="org.example.entites.Student"/>
+        <mapping class="org.example.relationships.Author"/>
+        <mapping class="org.example.relationships.Book"/>
+        <mapping class="org.example.relationships.Genre"/>
+        <mapping class="org.example.relationships.AuthorProfile"/>
+        <mapping class="org.example.relationships.Review"/>
+        <mapping class="org.example.relationships.ContactDetails"/>
 
     </session-factory>
 </hibernate-configuration>
