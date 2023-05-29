@@ -35,3 +35,7 @@ A Book can have multiple Reviews.
 A Book can have multiple Genres.
 
 A Genre can be associated with multiple Books.
+
+### Chap 3 :  Criteria API (Hibernate)
+The Criteria API is a programmatic way of building type-safe queries in Hibernate.
+( alternative approach to writing queries using a fluent and object-oriented syntax, rather than relying on JPQL or SQL strings. )
