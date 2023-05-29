@@ -37,6 +37,13 @@ public class CriteriaExamplesTest {
     }
 
     /* Example:  Joins ==> lazily fetched
+    different types of joins are available:
+
+    ** Inner Join: Returns only the matching rows between two tables.
+    ** Left Outer Join: Returns all rows from the left table and matching rows from the right table.
+    ** Right Outer Join: Returns all rows from the right table and matching rows from the left table.
+    ** Full Outer Join: Returns all rows from both tables, including unmatched rows.
+
      we used inner join in this case to return only the rows that have matching values in both tables (most commonly used )
      */
     @Test
@@ -46,7 +53,7 @@ public class CriteriaExamplesTest {
         Root<Book> bookRoot = query.from(Book.class);
 
         // inner Join
-        Join<Author ,Book> bookAuthorJoin = bookRoot.join("author");
+        Join<Author, Book> bookAuthorJoin = bookRoot.join("author");
         query.select(bookRoot)
                 .where(criteriaBuilder.equal(bookAuthorJoin.get("name"), "ECKHART TOLL"));
 
