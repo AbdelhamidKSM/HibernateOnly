@@ -1,9 +1,9 @@
-import jakarta.persistence.*;
+import BaseTest.BaseTestJPA;
+import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import org.example.relationships.Author;
 import org.example.relationships.Book;
 import org.example.relationships.Genre;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -12,28 +12,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 
-public class JPQLQueriesTest {
-
-
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
-    private EntityTransaction entityTransaction;
-
-    @Before
-    public void setup() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("jpa-only");
-        entityManager = entityManagerFactory.createEntityManager();
-        entityTransaction = entityManager.getTransaction();
-        entityTransaction.begin();
-    }
-
-    @After
-    public void cleanUp() {
-        entityTransaction.rollback();
-        entityManager.close();
-        entityManagerFactory.close();
-    }
-
+public class JPQLQueriesTest extends BaseTestJPA {
     @Test
     public void select_All_Authors() {
 // we work here with TypedQuery to specialize the type of the query

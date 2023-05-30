@@ -1,10 +1,5 @@
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import BaseTest.BaseTestJPA;
 import org.example.relationships.*;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,27 +7,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class RelationShipsCrudTest {
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
-    private EntityTransaction transaction;
-
-    @Before
-    public void setup() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("jpa-only");
-        entityManager = entityManagerFactory.createEntityManager();
-        transaction = entityManager.getTransaction();
-        transaction.begin();
-    }
-
-    @After
-    public void cleanup() {
-        transaction.commit();
-        entityManagerFactory.close();
-        entityManager.close();
-    }
-
-
+public class RelationShipsCrudTest  extends BaseTestJPA {
     @Test
     public  void test_Create_Relations(){
         // Create a new author

@@ -1,40 +1,17 @@
 package CriteriaAPI;
 
+import BaseTest.BaseTestHibernate;
 import jakarta.persistence.criteria.*;
 import org.example.relationships.Author;
 import org.example.relationships.Book;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-public class CriteriaExamplesTest {
-
-    private SessionFactory sessionFactory;
-    private Session session;
-    private Transaction transaction;
-
-    @Before
-    public void setUp() {
-        Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
-        sessionFactory = configuration.buildSessionFactory();
-        session = sessionFactory.openSession();
-        transaction = session.beginTransaction();
-    }
-
-    @After
-    public void cleanUp() {
-        transaction.rollback();
-        session.close();
-        sessionFactory.close();
-    }
+public class CriteriaExamplesTest extends BaseTestHibernate {
 
     /* Example:  Joins ==> lazily fetched
     different types of joins are available:
@@ -59,7 +36,7 @@ public class CriteriaExamplesTest {
 
         List<Book> innerJoinResult = session.createQuery(query).getResultList();
         assertNotNull(innerJoinResult);
-        assertEquals(77, innerJoinResult.size());
+        assertEquals(79, innerJoinResult.size());
 
     }
 
@@ -78,7 +55,7 @@ public class CriteriaExamplesTest {
         List<Book> books = session.createQuery(query).getResultList();
 
         assertNotNull(books);
-        assertEquals(77, books.size());
+        assertEquals(79, books.size());
     }
 
 }

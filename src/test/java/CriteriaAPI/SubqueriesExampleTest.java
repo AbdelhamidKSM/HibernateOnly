@@ -1,40 +1,18 @@
 package CriteriaAPI;
 
+import BaseTest.BaseTestHibernate;
 import jakarta.persistence.criteria.*;
 import org.example.relationships.Author;
 import org.example.relationships.Book;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
 
-public class SubqueriesExampleTest {
+public class SubqueriesExampleTest extends BaseTestHibernate {
 
-    private SessionFactory sessionFactory;
-    private Session session;
-    private Transaction transaction;
 
-    @Before
-    public void setUp() {
-        Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
-        sessionFactory = configuration.buildSessionFactory();
-        session = sessionFactory.openSession();
-        transaction = session.beginTransaction();
-    }
-
-    @After
-    public void cleanUp() {
-        transaction.rollback();
-        session.close();
-        sessionFactory.close();
-    }
 
     @Test
     public void test_SubQuery() {

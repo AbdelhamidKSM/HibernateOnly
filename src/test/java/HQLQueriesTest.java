@@ -1,13 +1,8 @@
+import BaseTest.BaseTestHibernate;
 import org.example.relationships.Author;
 import org.example.relationships.Book;
 import org.example.relationships.Genre;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -15,25 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class HQLQueriesTest {
-
-    private SessionFactory sessionFactory;
-    private Session session;
-    private Transaction transaction;
-
-    @Before
-    public void setup() {
-        sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        session = sessionFactory.openSession();
-        transaction = session.beginTransaction();
-    }
-
-    @After
-    public void cleanUp() {
-        transaction.rollback();
-        session.close();
-        sessionFactory.close();
-    }
+public class HQLQueriesTest extends BaseTestHibernate {
 
     @Test
     public void select_All_Authors() {

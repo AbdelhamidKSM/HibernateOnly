@@ -1,34 +1,10 @@
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import BaseTest.BaseTestJPA;
 import org.example.entites.Student;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class JPAFullCrudTest {
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
-    private EntityTransaction entityTransaction;
-
-
-    @Before
-    public void setup() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("jpa-only");
-        entityManager = entityManagerFactory.createEntityManager();
-        entityTransaction = entityManager.getTransaction();
-        entityTransaction.begin();
-    }
-
-    @After
-    public void cleanUp() {
-        entityTransaction.rollback();
-        entityManager.close();
-        entityManagerFactory.close();
-    }
+public class JPAFullCrudTest extends BaseTestJPA {
 
 
     @Test
