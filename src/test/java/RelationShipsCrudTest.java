@@ -147,6 +147,7 @@ public class RelationShipsCrudTest {
         // Create a new author
         Author author = new Author();
         author.setName("Jane Smith");
+        author.setAveragePrice(11D);
         entityManager.persist(author);
 
         // Update the author's name

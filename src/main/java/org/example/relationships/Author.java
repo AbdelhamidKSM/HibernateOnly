@@ -24,6 +24,10 @@ public class Author {
     @JdbcTypeCode(SqlTypes.VARCHAR) //Heads up! add jdbc type code. Just thought I'd mention it!
     private String name;
 
+    @Column(name = "average_price")
+    private Double averagePrice;
+
+
     /*    We use the Unidirectional relationship because each author has a profile, but the profile does not require a direct reference to the author. */
 
     /**
