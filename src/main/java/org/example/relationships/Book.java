@@ -13,6 +13,10 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@NamedQuery(
+        name = "Book.findByTitle",
+        query = "SELECT b FROM Book b WHERE b.title =:title"
+)
 public class Book {
 
     @Id
