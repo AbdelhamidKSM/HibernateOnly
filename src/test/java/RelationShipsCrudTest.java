@@ -1,4 +1,4 @@
-import BaseTest.BaseTestJPA;
+import baseTest.BaseTestJPA;
 import org.example.relationships.*;
 import org.junit.Test;
 

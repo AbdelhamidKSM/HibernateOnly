@@ -1,4 +1,4 @@
-import BaseTest.BaseTestHibernate;
+import baseTest.BaseTestHibernate;
 import org.example.relationships.Author;
 import org.example.relationships.Book;
 import org.example.relationships.Genre;

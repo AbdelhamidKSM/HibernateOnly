@@ -1,6 +1,6 @@
-package CriteriaAPI;
+package criteriaAPI;
 
-import BaseTest.BaseTestHibernate;
+import baseTest.BaseTestHibernate;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;

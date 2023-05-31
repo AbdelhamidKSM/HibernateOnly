@@ -1,4 +1,4 @@
-import BaseTest.BaseTestJPA;
+import baseTest.BaseTestJPA;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.example.relationships.Author;

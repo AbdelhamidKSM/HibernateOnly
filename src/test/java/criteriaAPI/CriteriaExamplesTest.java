@@ -1,6 +1,6 @@
-package CriteriaAPI;
+package criteriaAPI;
 
-import BaseTest.BaseTestHibernate;
+import baseTest.BaseTestHibernate;
 import jakarta.persistence.criteria.*;
 import org.example.relationships.Author;
 import org.example.relationships.Book;

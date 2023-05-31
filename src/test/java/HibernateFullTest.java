@@ -1,4 +1,4 @@
-import BaseTest.BaseTestHibernate;
+import baseTest.BaseTestHibernate;
 import org.example.entites.Student;
 import org.junit.Test;
 

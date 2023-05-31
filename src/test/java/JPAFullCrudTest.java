@@ -1,4 +1,4 @@
-import BaseTest.BaseTestJPA;
+import baseTest.BaseTestJPA;
 import org.example.entites.Student;
 import org.junit.Test;
 
