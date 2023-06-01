@@ -6,6 +6,20 @@
 
     <session-factory>
 
+        <!-- Enable second-level cache -->
+<!--        this conf does not work!!! i dnw the cause i tried a lot of solutions but no one works ....-->
+
+
+
+
+
+<!--        <property name="hibernate.cache.use_second_level_cache">true</property>-->
+
+<!--        &lt;!&ndash; Specify the cache region factory &ndash;&gt;-->
+<!--        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>-->
+
+<!--        &lt;!&ndash; Enable selective shared cache &ndash;&gt;-->
+<!--        <property name="javax.persistence.sharedCache.mode">ENABLE_SELECTIVE</property>-->
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 
