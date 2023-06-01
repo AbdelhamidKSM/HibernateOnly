@@ -1,7 +1,7 @@
 import baseTest.BaseTestHibernate;
-import org.example.relationships.Author;
-import org.example.relationships.Book;
-import org.example.relationships.Genre;
+import org.example.relationshipsentities.Author;
+import org.example.relationshipsentities.Book;
+import org.example.relationshipsentities.Genre;
 import org.hibernate.query.Query;
 import org.junit.Test;
 

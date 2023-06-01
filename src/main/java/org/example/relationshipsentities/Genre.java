@@ -1,4 +1,4 @@
-package org.example.relationships;
+package org.example.relationshipsentities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

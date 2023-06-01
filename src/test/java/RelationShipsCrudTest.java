@@ -1,5 +1,5 @@
 import baseTest.BaseTestJPA;
-import org.example.relationships.*;
+import org.example.relationshipsentities.*;
 import org.junit.Test;
 
 import java.util.ArrayList;

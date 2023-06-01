@@ -1,9 +1,9 @@
 import baseTest.BaseTestJPA;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
-import org.example.relationships.Author;
-import org.example.relationships.Book;
-import org.example.relationships.Genre;
+import org.example.relationshipsentities.Author;
+import org.example.relationshipsentities.Book;
+import org.example.relationshipsentities.Genre;
 import org.junit.Test;
 
 import java.time.LocalDate;

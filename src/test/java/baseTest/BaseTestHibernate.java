@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 
 public class BaseTestHibernate {
-    SessionFactory sessionFactory;
+    public SessionFactory sessionFactory;
     public Session session;
     Transaction transaction;
 

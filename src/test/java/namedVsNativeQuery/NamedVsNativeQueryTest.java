@@ -2,7 +2,7 @@ package namedVsNativeQuery;
 
 import baseTest.BaseTestHibernate;
 import jakarta.persistence.TypedQuery;
-import org.example.relationships.Book;
+import org.example.relationshipsentities.Book;
 import org.hibernate.query.Query;
 import org.junit.Test;
 

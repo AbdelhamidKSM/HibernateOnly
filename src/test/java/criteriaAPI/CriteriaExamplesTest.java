@@ -2,8 +2,8 @@ package criteriaAPI;
 
 import baseTest.BaseTestHibernate;
 import jakarta.persistence.criteria.*;
-import org.example.relationships.Author;
-import org.example.relationships.Book;
+import org.example.relationshipsentities.Author;
+import org.example.relationshipsentities.Book;
 import org.junit.Test;
 
 import java.util.List;
